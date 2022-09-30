@@ -12,8 +12,7 @@ import "primeflex/primeflex.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap';
 import MenubarDemo from './components/topbar.jsx';
-import PieChartDemo from './components/pie.jsx';
-import VirtualScrollerDemo from './components/leftbar';
+import MiniDrawer from './dashboardMenu/DashboardMenu';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Header from './components/header.jsx'
 import Gallery from './components/gallery.jsx'
@@ -29,13 +28,13 @@ function App() {
 
       <Router>
       <MenubarDemo/>
-     
+      <MiniDrawer/>
         <Routes>
           <Route path = '/' element               = {<Home/>}/>
           <Route path      = "/gallery" element        = {<Gallery />} />
           <Route path      = '/create-student' element = {<RegForm/>}/>
           <Route path      = '/edit/:id' element       = {<EditUser/>}/>
-          <Route path      = '/leftbar' element       = { <VirtualScrollerDemo/>}/>
+        
          
 
         </Routes>
