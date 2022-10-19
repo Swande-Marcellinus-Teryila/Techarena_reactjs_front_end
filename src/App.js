@@ -2,6 +2,7 @@
 import './'
 import './App.css';
 import './css/styles.css'
+import  './css/admin.css'
 
 //defualt imports for primereact
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
@@ -11,29 +12,43 @@ import "primeflex/primeflex.css";
 //end of default imports for primereact
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap';
-import MenubarDemo from './components/topbar.jsx';
-import MiniDrawer from './dashboardMenu/DashboardMenu';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { useCountUp } from 'react-countup';
+
+import MiniDrawer from './components/admin/dashboardMenu/DashboardMenu';
+import  AdminDashboard from './components/admin/index';
+
+
 import Header from './components/header.jsx'
 import Gallery from './components/gallery.jsx'
 import RegForm from './components/create-student';
-import Home from './components/home';
+
 import EditUser from './components/edit';
+
+import Index from './components/admin/roles/index';
+import Create from './components/admin/roles/create';
+
+
 
 
 function App() {
   return (
+    
     <div>
-
-
       <Router>
-      <MenubarDemo/>
-      <MiniDrawer/>
+        
         <Routes>
-          <Route path = '/' element               = {<Home/>}/>
-          <Route path      = "/gallery" element        = {<Gallery />} />
-          <Route path      = '/create-student' element = {<RegForm/>}/>
-          <Route path      = '/edit/:id' element       = {<EditUser/>}/>
+        <Route exact path = '/'  element               = {<MiniDrawer panelcomponent ={<AdminDashboard/>}/>}/>
+          <Route path = '/tai/main/' element               = {<MiniDrawer panelcomponent ={<AdminDashboard/>}/>}/>
+          <Route path      = "/tai/main/gallery" element        = { <MiniDrawer panelcomponent ={<Gallery/>}/>} />
+
+
+          <Route path      = '/tai/main/roles' element = {<MiniDrawer panelcomponent ={<Index/>}/>}/>
+          <Route path      = '/tai/main/roles/create' element = {<MiniDrawer panelcomponent ={<Create/>}/>}/>
+          
         
          
 

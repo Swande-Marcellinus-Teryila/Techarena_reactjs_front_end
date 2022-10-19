@@ -1,0 +1,96 @@
+@media print {
+     .admin-drawer {
+          display: none
+     }
+
+     .app-bar {
+          display: none;
+     }
+
+     .admin-label {
+          display: none;
+     }
+     .add-record-btn{
+          display: none;
+     }
+     .update-record-btn{
+          display: none;
+     }
+     .refresh-btn-icon{
+          display: none;
+     }
+     .refresh-btn{
+          display: none;
+          
+     }
+
+}
+
+.dashboard-icons {
+     font-weight: 700;
+     color: #012970;
+     color:light
+
+
+}
+
+.icon-background {
+     font-size: '3.7rem';
+     text-align: 'center';
+     border-radius: '100%';
+     background-color: '#f6f6fe';
+}
+
+
+/*
+============================ admin tables =============================
+*/
+
+.table-heading{
+     background-color: rgb(128, 99, 21);
+     color:aliceblue;
+     text-shadow: 2px 1px 6px rgb(225, 217, 233);
+     
+}
+.table-heading h1{
+     text-align: center;
+}
+
+
+.add-record-btn{
+     margin:10px;
+     background-color: rgb(31, 34, 209);
+     color:white;
+}
+.add-record-btn:hover{
+     background-color: rgba(31, 34, 209, 0.808);
+     color:white; 
+}
+
+.update-record-btn{
+     margin:10px;
+     background-color: rgb(31, 34, 209);
+     color:white;
+}
+.update-record-btn:hover{
+     background-color: rgba(31, 34, 209, 0.877);
+     color:white; 
+}
+
+.refresh-btn{
+     background-color: rgb(31, 34, 209);
+     color:white;
+}
+.refresh-btn:hover{
+     background-color: rgba(25, 64, 190, 0.904);
+     color:white;    
+}
+.refresh-btn-icon{
+     color:white;  
+     transform: rotateX(180deg); 
+}
+.refresh-btn-icon:hover{
+     color:white;  
+     transition: all 1s;
+     transform: rotateX(360deg); 
+}

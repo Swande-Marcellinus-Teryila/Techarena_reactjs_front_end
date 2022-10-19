@@ -19,7 +19,15 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import HomeIcon from '@mui/icons-material/Home';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import GroupIcon from '@mui/icons-material/Group';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import WorkIcon from '@mui/icons-material/Work';
+import SchoolIcon from '@mui/icons-material/School';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import { Link } from 'react-router-dom';
+
 
 const drawerWidth = 240;
 
@@ -104,7 +112,19 @@ export default function MiniDrawer({ panelcomponent }) {
       case '':return <HomeIcon/>
         break;
 
-        case 'gallery':return <InboxIcon/>
+        case 'Students':return <PeopleAltIcon/>
+        break;
+        case 'Staff':return <PeopleAltIcon style={{color:'lightgreen'}}/>
+        break;
+        case 'Students':return <PeopleAltIcon/>
+        break;
+        case 'Courses':return <AutoStoriesIcon />
+        break;
+        case 'Departments':return <HomeWorkIcon />
+        break;
+        case 'Products':return <WorkIcon/>
+        break;
+        case 'roles':return <WorkIcon/>
         break;
       default:
       
@@ -114,7 +134,7 @@ export default function MiniDrawer({ panelcomponent }) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar className='app-bar' position="fixed" style={{ backgroundColor: "navy" }} open={open}>
+      <AppBar className='app-bar shadow-lg' position="fixed" style={{ backgroundColor: "white", color:'#012970' }} open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -143,7 +163,7 @@ export default function MiniDrawer({ panelcomponent }) {
         <Divider />
         <List>
           
-          {['', 'gallery', 'Send email', 'Drafts'].map((text, index) => (
+          {['', 'Students', 'roles', 'Courses','Departments','Products','Scholarhsips','Partners'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -159,7 +179,7 @@ export default function MiniDrawer({ panelcomponent }) {
                     justifyContent: 'center',
                   }}
                 >
-                  <Link to={"/"+text}>{AssignMenuIcon(text)}</Link>
+                  <Link to={"/tai/main/"+text}>{AssignMenuIcon(text)}</Link>
                 </ListItemIcon>
                 {text === '' ? <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} /> :
                   <ListItemText primary={text.toLocaleUpperCase()} sx={{ opacity: open ? 1 : 0 }} />
@@ -196,9 +216,12 @@ export default function MiniDrawer({ panelcomponent }) {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Typography paragraph>
-          {panelcomponent}  fsdfsdf
+        <Typography paragraph  style={{ backgroundColor:'whitesmoke',}}>
+          {panelcomponent} 
         </Typography>
+       
+          <footer style={{textAlign:'center',marginTop:'70px',color:'#e67300'}}>All rights reserved</footer>
+        
 
       </Box>
     </Box>
