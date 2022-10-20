@@ -26,6 +26,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import SchoolIcon from '@mui/icons-material/School';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import HomeWorkIcon from '@mui/icons-material/HomeWork';
+import ListAltIcon from '@mui/icons-material/ListAlt';
 import { Link } from 'react-router-dom';
 
 
@@ -117,6 +118,10 @@ export default function MiniDrawer({ panelcomponent }) {
         case 'Staff':return <PeopleAltIcon style={{color:'lightgreen'}}/>
         break;
         case 'Students':return <PeopleAltIcon/>
+        case 'Course':return <PeopleAltIcon/>
+       
+        break;
+        case 'Course':return < ListAltIcon/>
         break;
         case 'Courses':return <AutoStoriesIcon />
         break;

@@ -28,12 +28,9 @@ import RegForm from './components/create-student';
 
 import EditUser from './components/edit';
 
-import Index from './components/admin/roles/index';
-import Create from './components/admin/roles/create';
-
-
-
-
+import Index from './components/admin/roles/index.role';
+import Create from './components/admin/roles/create.role';
+import Edit from './components/admin/roles/edit.role';
 function App() {
   return (
     
@@ -48,7 +45,7 @@ function App() {
 
           <Route path      = '/tai/main/roles' element = {<MiniDrawer panelcomponent ={<Index/>}/>}/>
           <Route path      = '/tai/main/roles/create' element = {<MiniDrawer panelcomponent ={<Create/>}/>}/>
-          
+          <Route path      = '/tai/main/roles/edit/:id' element = {<MiniDrawer panelcomponent ={<Edit/>}/>}/>  
         
          
 

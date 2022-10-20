@@ -68,13 +68,14 @@
 }
 
 .update-record-btn{
-     margin:10px;
      background-color: rgb(31, 34, 209);
      color:white;
+     text-decoration: none;
 }
 .update-record-btn:hover{
      background-color: rgba(31, 34, 209, 0.877);
-     color:white; 
+     color:white;
+      
 }
 
 .refresh-btn{

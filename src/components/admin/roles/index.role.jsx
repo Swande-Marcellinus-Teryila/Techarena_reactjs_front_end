@@ -59,7 +59,7 @@ export default function Index() {
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#9900ff',
+      confirmButtonColor: '#0055ce',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
@@ -134,13 +134,15 @@ export default function Index() {
 
   const tableHeading = <div className="table-heading"><h1>Roles</h1></div>
 
-  const editIcon = <Button className="update-record-btn" >Edit<EditIcon /></Button>
+  const EditRecord=({id}) =><Link to={`edit/${id}`}>
+  <Button title="Edit Record" className="update-record-btn">Edit<EditIcon/> </Button>
+</Link>
 
   let tableData = []
   
     if (collection.length > 0) {
       collection.map((data, idx) => {
-       return tableData.push([data.role_name, data.role_description, editIcon, data.id]);
+       return tableData.push([data.role_name, data.role_description, <EditRecord id={data.id}/>, data.id]);
       })
     }
   
