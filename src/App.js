@@ -31,6 +31,11 @@ import EditUser from './components/edit';
 import Index from './components/admin/roles/index.role';
 import Create from './components/admin/roles/create.role';
 import Edit from './components/admin/roles/edit.role';
+
+/* course categories */
+import CategoryIndex from './components/admin/course-categories/index.course-category';
+import CreateCategory from './components/admin/course-categories/create.course-category';
+import EditCategory from './components/admin/course-categories/edit.course-category';
 function App() {
   return (
     
@@ -45,7 +50,12 @@ function App() {
 
           <Route path      = '/tai/main/roles' element = {<MiniDrawer panelcomponent ={<Index/>}/>}/>
           <Route path      = '/tai/main/roles/create' element = {<MiniDrawer panelcomponent ={<Create/>}/>}/>
-          <Route path      = '/tai/main/roles/edit/:id' element = {<MiniDrawer panelcomponent ={<Edit/>}/>}/>  
+          <Route path      = '/tai/main/roles/edit/:id' element = {<MiniDrawer panelcomponent ={<Edit/>}/>}/> 
+
+          /* COURSE categories */
+          <Route path      = '/tai/main/course-categories' element = {<MiniDrawer panelcomponent ={<CategoryIndex/>}/>}/>
+          <Route path      = '/tai/main/course-categories/create' element = {<MiniDrawer panelcomponent ={<CreateCategory/>}/>}/>
+          <Route path      = '/tai/main/course-categories/edit/:id' element = {<MiniDrawer panelcomponent ={<EditCategory/>}/>}/>  
         
          
 

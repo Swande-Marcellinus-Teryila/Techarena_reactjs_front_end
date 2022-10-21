@@ -29,6 +29,16 @@ import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import { Link } from 'react-router-dom';
 
+import Paper from '@mui/material/Paper';
+import MenuList from '@mui/material/MenuList';
+import MenuItem from '@mui/material/MenuItem';
+import ContentCut from '@mui/icons-material/ContentCut';
+import ContentCopy from '@mui/icons-material/ContentCopy';
+import ContentPaste from '@mui/icons-material/ContentPaste';
+import Cloud from '@mui/icons-material/Cloud';
+import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined';
+import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
+
 
 const drawerWidth = 240;
 
@@ -108,38 +118,89 @@ export default function MiniDrawer({ panelcomponent }) {
     setOpen(false);
   };
 
-  function AssignMenuIcon(menu){
-    switch (menu) {
-      case '':return <HomeIcon/>
-        break;
 
-        case 'Students':return <PeopleAltIcon/>
-        break;
-        case 'Staff':return <PeopleAltIcon style={{color:'lightgreen'}}/>
-        break;
-        case 'Students':return <PeopleAltIcon/>
-        case 'Course':return <PeopleAltIcon/>
-       
-        break;
-        case 'Course':return < ListAltIcon/>
-        break;
-        case 'Courses':return <AutoStoriesIcon />
-        break;
-        case 'Departments':return <HomeWorkIcon />
-        break;
-        case 'Products':return <WorkIcon/>
-        break;
-        case 'roles':return <WorkIcon/>
-        break;
-      default:
-      
-    }
-  }
+
+
+
+
+
+  const sideMenu = <><Paper sx={{ width: 320, maxWidth: '100%' }}>
+    <MenuList>
+    <Link
+        to={'/'}
+        className="text-decoration-none text text-dark"
+        >
+        <MenuItem>
+          <ListItemIcon>
+            <HomeIcon fontSize='small' />
+          </ListItemIcon>
+          <ListItemText>&nbsp;&nbsp;
+            Home
+          </ListItemText>
+        </MenuItem>
+      </Link>
+      <Divider />
+     
+      <Divider />
+      <Link
+        to={'/tai/main/roles'}
+        className="text-decoration-none text text-dark"
+        >
+        <MenuItem>
+          <ListItemIcon>
+            <PeopleAltIcon fontSize='small'/>
+          </ListItemIcon>
+          <ListItemText>&nbsp;&nbsp;
+            Roles
+          </ListItemText>
+        </MenuItem>
+      </Link>
+
+      <Link
+        to={'/tai/main/courses'}
+        className="text-decoration-none text text-dark"
+        >
+        <MenuItem>
+        
+          <ListItemIcon>
+            <LibraryBooksOutlinedIcon fontSize='small' />
+          </ListItemIcon>
+          <ListItemText>&nbsp;&nbsp;
+            Courses 
+          </ListItemText>
+        </MenuItem>
+      </Link>
+
+      <Link
+        to={'/tai/main/course-categories'}
+        className="text-decoration-none text text-dark"
+        >
+        <MenuItem>
+          <ListItemIcon>
+            <AutoStoriesIcon fontSize='small'/>
+          </ListItemIcon>
+          <ListItemText>&nbsp;&nbsp;
+            Course  Category
+          </ListItemText>
+        </MenuItem>
+      </Link>
+      <Divider />
+      <MenuItem>
+        <ListItemIcon>
+          <Cloud fontSize="small" />
+        </ListItemIcon>
+        <ListItemText>Web Clipboard</ListItemText>
+      </MenuItem>
+    </MenuList>
+  </Paper>
+  </>
+
+
 
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar className='app-bar shadow-lg' position="fixed" style={{ backgroundColor: "white", color:'#012970' }} open={open}>
+      <AppBar className='app-bar shadow-lg' position="fixed" style={{ backgroundColor: "white", color: '#012970' }} open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -153,10 +214,10 @@ export default function MiniDrawer({ panelcomponent }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className ='admin-label' variant="h6" noWrap component="div">
+          <Typography className='admin-label' variant="h6" noWrap component="div">
             Admin
           </Typography>
-          
+
         </Toolbar>
       </AppBar>
       <Drawer className='admin-drawer' variant="permanent" open={open}>
@@ -165,68 +226,22 @@ export default function MiniDrawer({ panelcomponent }) {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
-        <Divider />
+        <Divider className='bg bg-light' />
         <List>
-          
-          {['', 'Students', 'roles', 'Courses','Departments','Products','Scholarhsips','Partners'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Link to={"/tai/main/"+text}>{AssignMenuIcon(text)}</Link>
-                </ListItemIcon>
-                {text === '' ? <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} /> :
-                  <ListItemText primary={text.toLocaleUpperCase()} sx={{ opacity: open ? 1 : 0 }} />
-                }
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {sideMenu}
         </List>
+
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Typography paragraph  style={{ backgroundColor:'whitesmoke',}}>
-          {panelcomponent} 
+        <Typography paragraph style={{ backgroundColor: 'whitesmoke', }}>
+          {panelcomponent}
         </Typography>
-       
-          <footer style={{textAlign:'center',marginTop:'70px',color:'#e67300'}}>All rights reserved</footer>
-        
+
+        <footer style={{ textAlign: 'center', marginTop: '70px', color: '#e67300' }}>All rights reserved</footer>
+
 
       </Box>
     </Box>
