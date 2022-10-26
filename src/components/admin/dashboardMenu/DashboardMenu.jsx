@@ -184,6 +184,21 @@ export default function MiniDrawer({ panelcomponent }) {
           </ListItemText>
         </MenuItem>
       </Link>
+
+      <Link
+        to={'/tai/main/course-prices'}
+        className="text-decoration-none text text-dark"
+        >
+        <MenuItem>
+        
+          <ListItemIcon>
+            <LibraryBooksOutlinedIcon fontSize='small' />
+          </ListItemIcon>
+          <ListItemText>&nbsp;&nbsp;
+            Courses  Prices
+          </ListItemText>
+        </MenuItem>
+      </Link>
       <Divider />
 
       <Link
@@ -200,6 +215,8 @@ export default function MiniDrawer({ panelcomponent }) {
         </MenuItem>
       </Link>
       <Divider />
+
+  
       <MenuItem>
         <ListItemIcon>
           <Cloud fontSize="small" />

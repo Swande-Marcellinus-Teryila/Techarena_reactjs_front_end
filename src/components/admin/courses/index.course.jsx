@@ -41,13 +41,13 @@ export default function Index() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    document.title = "students - Techarena innovasion "
+    document.title = "Courses - Techarena innovasion "
     getCollections()
   }, [])
   const getCollections = async () => {
     setIsLoading(true);
-    await api.get(`roles/`).then(({ data }) => {
-      setCollections(data)
+    await api.get(`courses/`).then(({ data }) => {
+      setCollections(data.courses)
       setIsLoading(false)
     })
   }
@@ -68,8 +68,7 @@ export default function Index() {
     if (!isConfirm) {
       window.location.reload();
     }
-  
-    await api.delete(`roles/${id}`).then(({ data }) => {
+    await api.delete(`courses/${id}`).then(({ data }) => {
       Swal.fire({
         icon: "success",
         text: data.message
@@ -87,8 +86,9 @@ export default function Index() {
 
 
   const columns = [
-    { name: "ROLE", options: { filterOptions: { fullWidth: true } } },
+    { name: "COURSE", options: { filterOptions: { fullWidth: true } } },
     "DESCRIPTION",
+    'DEPARTMENT',
     {
       name: "Action", 
       options: {
@@ -114,7 +114,7 @@ export default function Index() {
     tableBodyMaxHeight,
     selectableRows: true, // <===== will turn off checkboxes in rows
     downloadOptions: {
-      filename: 'roles.csv',
+      filename: 'Techarena-courses.csv',
     },
 
     onRowsDelete: (rowsDeleted) => {
@@ -127,13 +127,14 @@ export default function Index() {
     }
   };
 
+  console.log(collection);
   const addRecordBtn = <><Link to={"create"}>
     <Button title="Add Record" className="add-record-btn">Add Record<ControlPointIcon /> </Button>
   </Link>&nbsp;
     <Button onClick={getCollections} disabled={isLoading} className="refresh-btn"><AutorenewIcon className="refresh-btn-icon" /></Button>
   </>
 
-  const tableHeading = <div className="table-heading"><h1>Roles</h1></div>
+  const tableHeading = <div className="table-heading"><h1>Courses</h1></div>
 
   const EditRecord=({id}) =><Link to={`edit/${id}`}>
   <Button title="Edit Record" className="update-record-btn">Edit<EditIcon/> </Button>
@@ -143,7 +144,7 @@ export default function Index() {
   
     if (collection.length > 0) {
       collection.map((data, idx) => {
-       return tableData.push([data.role_name, data.role_description, <EditRecord id={data.id}/>, data.id]);
+       return tableData.push([data.course_name, data.description, data.dept_name,<EditRecord id={data.id}/>, data.id]);
       })
     }
   

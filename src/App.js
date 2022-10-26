@@ -40,6 +40,16 @@ import EditCategory from './components/admin/course-categories/edit.course-categ
 import DepartmentIndex from './components/admin/departments/index.department';
 import CreateDepartment from './components/admin/departments/create.department';
 import EditDepartment from './components/admin/departments/edit.department';
+
+/*courses */
+import CourseIndex from './components/admin/courses/index.course';
+import CreateCourse from './components/admin/courses/create.course';
+import EditCourse from './components/admin/courses/edit.course';
+
+/*courses prices */
+import CoursePriceIndex from './components/admin/course-prices/index.courseprice';
+import CreateCoursePrice from './components/admin/course-prices/create.courseprice';
+import EditCoursePrice from './components/admin/course-prices/edit.courseprice';
 function App() {
   return (
 
@@ -65,7 +75,16 @@ function App() {
           <Route path='/tai/main/departments' element={<MiniDrawer panelcomponent={<DepartmentIndex />} />} />
           <Route path='/tai/main/departments/create' element={<MiniDrawer panelcomponent={<CreateDepartment />} />} />
           <Route path='/tai/main/departments/edit/:id' element={<MiniDrawer panelcomponent={<EditDepartment />} />} />
+      /* courses */
 
+          <Route path='/tai/main/courses' element={<MiniDrawer panelcomponent={<CourseIndex />} />} />
+          <Route path='/tai/main/courses/create' element={<MiniDrawer panelcomponent={<CreateCourse />} />} />
+          <Route path='/tai/main/courses/edit/:id' element={<MiniDrawer panelcomponent={<EditCourse />} />} />
+      /* course prices */
+
+          <Route path='/tai/main/course-prices' element={<MiniDrawer panelcomponent={<CoursePriceIndex />} />} />
+          <Route path='/tai/main/course-prices/create' element={<MiniDrawer panelcomponent={<CreateCoursePrice />} />} />
+          <Route path='/tai/main/course-prices/edit/:id' element={<MiniDrawer panelcomponent={<EditCoursePrice />} />} />
 
 
         </Routes>

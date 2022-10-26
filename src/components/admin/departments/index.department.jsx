@@ -27,7 +27,7 @@ const muiCache = createCache({
 });
 
 
-export default function DepartmentIndex() {
+export default function Index() {
   const [responsive, setResponsive] = useState("vertical");
   const [tableBodyHeight, setTableBodyHeight] = useState("400px");
   const [tableBodyMaxHeight, setTableBodyMaxHeight] = useState("");
@@ -41,7 +41,7 @@ export default function DepartmentIndex() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    document.title = "departments - Techarena innovasion "
+    document.title = "Departments - Techarena innovasion "
     getCollections()
   }, [])
   const getCollections = async () => {
@@ -68,7 +68,8 @@ export default function DepartmentIndex() {
     if (!isConfirm) {
       window.location.reload();
     }
-    await api.delete(`departments/${id}`).then(({ data }) => {
+    console.log(id);
+    await api.delete(`courses/${id}`).then(({ data }) => {
       Swal.fire({
         icon: "success",
         text: data.message
@@ -86,8 +87,7 @@ export default function DepartmentIndex() {
 
 
   const columns = [
-    { name: "Departments", options: { filterOptions: { fullWidth: true } } },
-   
+    { name: "DEPARTMENT", options: { filterOptions: { fullWidth: true } } },
     {
       name: "Action", 
       options: {
@@ -113,7 +113,7 @@ export default function DepartmentIndex() {
     tableBodyMaxHeight,
     selectableRows: true, // <===== will turn off checkboxes in rows
     downloadOptions: {
-      filename: 'departments.csv',
+      filename: 'Techarena-departments.csv',
     },
 
     onRowsDelete: (rowsDeleted) => {
@@ -132,7 +132,7 @@ export default function DepartmentIndex() {
     <Button onClick={getCollections} disabled={isLoading} className="refresh-btn"><AutorenewIcon className="refresh-btn-icon" /></Button>
   </>
 
-  const tableHeading = <div className="table-heading"><h1>departments</h1></div>
+  const tableHeading = <div className="table-heading"><h1>Departments</h1></div>
 
   const EditRecord=({id}) =><Link to={`edit/${id}`}>
   <Button title="Edit Record" className="update-record-btn">Edit<EditIcon/> </Button>
@@ -141,8 +141,8 @@ export default function DepartmentIndex() {
   let tableData = []
   
     if (collection.length > 0) {
-      collection.map((data, index) => {
-       return tableData.push([data.dept_name, <EditRecord id={data.id}/>, data.id]);
+      collection.map((data, idx) => {
+       return tableData.push([data.dept_name,<EditRecord id={data.id}/>, data.id]);
       })
     }
   
