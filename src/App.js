@@ -50,6 +50,12 @@ import EditCourse from './components/admin/courses/edit.course';
 import CoursePriceIndex from './components/admin/course-prices/index.courseprice';
 import CreateCoursePrice from './components/admin/course-prices/create.courseprice';
 import EditCoursePrice from './components/admin/course-prices/edit.courseprice';
+
+/*students*/
+import StudentIndex from './components/admin/students/index.student';
+import CreateStudent from './components/admin/students/create.student';
+import EditStudent from './components/admin/students/edit.student';
+
 function App() {
   return (
 
@@ -85,6 +91,12 @@ function App() {
           <Route path='/tai/main/course-prices' element={<MiniDrawer panelcomponent={<CoursePriceIndex />} />} />
           <Route path='/tai/main/course-prices/create' element={<MiniDrawer panelcomponent={<CreateCoursePrice />} />} />
           <Route path='/tai/main/course-prices/edit/:id' element={<MiniDrawer panelcomponent={<EditCoursePrice />} />} />
+          /* students */
+
+          <Route path='/tai/main/students' element={<MiniDrawer panelcomponent={<StudentIndex />} />} />
+          <Route path='/tai/main/students/create' element={<MiniDrawer panelcomponent={<CreateStudent />} />} />
+          <Route path='/tai/main/students/edit/:id' element={<MiniDrawer panelcomponent={<EditStudent />} />} />
+
 
 
         </Routes>

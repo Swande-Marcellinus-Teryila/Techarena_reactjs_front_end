@@ -214,6 +214,21 @@ export default function MiniDrawer({ panelcomponent }) {
           </ListItemText>
         </MenuItem>
       </Link>
+      <Divider/>
+      <Divider/>
+      <Link
+        to={'/tai/main/students'}
+        className="text-decoration-none text text-dark"
+        >
+        <MenuItem>
+          <ListItemIcon>
+            <AutoStoriesIcon fontSize='small'/>
+          </ListItemIcon>
+          <ListItemText>&nbsp;&nbsp;
+            Students
+          </ListItemText>
+        </MenuItem>
+      </Link>
       <Divider />
 
   

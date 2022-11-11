@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import api from '../../../api/api';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Params, useParams } from 'react-router-dom'
 import TextField from '@mui/material/TextField';
 
 import InputLabel from '@mui/material/InputLabel';
@@ -19,12 +19,13 @@ import ChevronLeftOutlinedIcon from '@mui/icons-material/ChevronLeftOutlined';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 
 
-export default function CreatCourse() {
+export default function EditStudent() {
     const navigate = useNavigate();
+    const { id } = useParams();
     const [course_name, setCourseName] = useState("")
     const [description, setDescription] = useState("")
     const [departmentId, setDepartmentId] = useState("")
-    const [departments, setDepartments] = useState([])
+    const [departments, setDepartment] = useState([])
 
     const [validationError, setValidationError] = useState([])
     const [errorMessage, setErrorMessage] = useState("");
@@ -32,29 +33,51 @@ export default function CreatCourse() {
 
 
     useEffect(() => {
-        document.title = "create courses -Techarena innovasion";
-        getDepartments();
-    }, []);
-    const getDepartments = async () => {
-        setIsLoading(true);
-        await api.get(`courses/`).then(({ data }) => {
-          setDepartments(data.departments)
-          setIsLoading(false)
+        document.title = "edit courses -Techarena innovasion";
+
+        getCollections()
+    }, [])
+
+    const getCollections = async () => {
+        await api.get(`courses/${id}`).then(({ data }) => {
+            console.log(data.content);
+            const {course_name,description,department_id} = data.content
+
+            setCourseName(course_name);
+            setDepartmentId(course_name);
+            setDescription(description);
+            setDepartmentId(department_id);
+            
+            setDepartment(data.departments);
+
+        }).catch(({ response: { data } }) => {
+
+            if (data.status === 404) {
+                navigate('/404')
+            } else {
+                setIsLoading(true);
+                Swal.fire({
+                    text: data.message,
+                    icon: "error"
+                })
+            }
+
+
         })
     }
 
-    const createCourse = async (e) => {
+    const updateDepartment = async (e) => {
         e.preventDefault();
         if (errorMessage === "") {
 
             setIsLoading(true);
 
             const formData = new FormData()
+            formData.append('_method', 'PATCH');
             formData.append('course_name', course_name);
             formData.append('description', description);
             formData.append('department_id', departmentId);
-
-            await api.post(`courses/`, formData).then(({ data }) => {
+            await api.post(`courses/${id}`, formData).then(({ data }) => {
                 Swal.fire({
                     icon: "success",
                     text: data.message
@@ -77,14 +100,14 @@ export default function CreatCourse() {
                 <div className="col-12 col-sm-12 col-md-6">
                     <div className="card">
                         <div className="card-body">
-                            <h4 className="card-title">Add New Course</h4>
+                            <h3 className="card-title bg bg-light text text-center">Edit Department</h3>
                             <hr />
                             <div className="form-wrapper">
 
 
-                                <Form onSubmit={createCourse}>
+                                <Form onSubmit={updateDepartment}>
 
-                                    <Row>
+                                <Row>
 
                                         <Col>
                                             <TextField
@@ -139,13 +162,12 @@ export default function CreatCourse() {
                                             />
                                         </Col>
                                     </Row>
-
                                     <table>
                                         <tr>
                                             <td>
                                                 <Button className="add-record-btn" size="md"
                                                     block="block" type="submit" disabled={isLoading}>
-                                                    Add <SaveOutlinedIcon />
+                                                    Update
                                                 </Button>
                                             </td>
 
